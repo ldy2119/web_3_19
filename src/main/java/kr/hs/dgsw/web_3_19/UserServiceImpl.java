@@ -39,20 +39,6 @@ public class UserServiceImpl implements UserService{
         return found;
     }
 
-    @Override
-    public User viewById(String id) {
-        User found = null;
-        for(int i = 0; i < userList.size(); i++)
-        {
-            if(userList.get(i).getId().equals(id))
-            {
-                found = this.userList.get(i);
-                break;
-            }
-        }
-        return found;
-    }
-
     public User find1(String name) {
         Iterator<User> iterator = this.userList.iterator();
         while(iterator.hasNext())
@@ -88,12 +74,6 @@ public class UserServiceImpl implements UserService{
         return this.userList.add(user);
     }
 
-    @Override
-    public boolean addById(User user) {
-        if(viewById(user.getId()) != null)
-            return false;
-        return this.userList.add(user);
-    }
 
     @Override
     public User update(User user) {
@@ -105,6 +85,33 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public boolean delete(String name) {
+        User found = view(name);
+        return this.userList.remove(found);
+    }
+
+    @Override
+    public User viewById(String id) {
+        User found = null;
+        for(int i = 0; i < userList.size(); i++)
+        {
+            if(userList.get(i).getId().equals(id))
+            {
+                found = this.userList.get(i);
+                break;
+            }
+        }
+        return found;
+    }
+
+    @Override
+    public boolean addById(User user) {
+        if(viewById(user.getId()) != null)
+            return false;
+        return this.userList.add(user);
+    }
+
+    @Override
     public User updateById(User user) {
         User found = viewById(user.getId());
         if(found != null)
@@ -113,12 +120,6 @@ public class UserServiceImpl implements UserService{
             found.setName(user.getName());
         }
         return found;
-    }
-
-    @Override
-    public boolean delete(String name) {
-        User found = view(name);
-        return this.userList.remove(found);
     }
 
     @Override
