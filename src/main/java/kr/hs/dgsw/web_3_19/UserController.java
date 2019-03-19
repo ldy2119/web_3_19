@@ -11,13 +11,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping("/user")
-//    @ResponseBody
-//    public List<User> list()
-//    {
-//        return userService.list();
-//    }
-//
+    @GetMapping("/user")
+    @ResponseBody
+    public List<User> list()
+    {
+        return userService.list();
+    }
+
 //    @GetMapping("/user/{name}")
 //    @ResponseBody
 //    public User view(@PathVariable String name)
@@ -45,13 +45,6 @@ public class UserController {
 //    {
 //        return this.userService.delete(name);
 //    }
-
-    @GetMapping("/user")
-    @ResponseBody
-    public List<User> list()
-    {
-        return userService.list();
-    }
 
     @GetMapping("/user/{id}")
     @ResponseBody

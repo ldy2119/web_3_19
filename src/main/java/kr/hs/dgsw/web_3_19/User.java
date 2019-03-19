@@ -4,6 +4,7 @@ public class User {
 
     private String name;
     private String email;
+    private String id;
 
     public String getId() {
         return id;
@@ -13,7 +14,6 @@ public class User {
         this.id = id;
     }
 
-    private String id;
 
     @Override
     public String toString() {
